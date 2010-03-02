@@ -1,6 +1,7 @@
 = Redirect Page
 
 A redirect page will redirect to the url defined in the first page part.
+This allows you to have non pages (external urls, special controllers) in normal page menu's.
 
 Based on the radiant-vapor-extension by Jim Gay:
 http://github.com/saturnflyer/radiant-vapor-extension/tree/master
