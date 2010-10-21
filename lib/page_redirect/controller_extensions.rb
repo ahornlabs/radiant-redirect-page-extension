@@ -10,7 +10,7 @@ module PageRedirect::ControllerExtensions
     else
       url = url.to_s
     end
-    a_match = Page.find_by_url(url, live?)    
+    a_math = params[:locale].blank? ? Page.find_by_url(url, live?) : Page.find_by_url("#{params[:locale].to_s}/#{url}", live?)
     if a_match && a_match.is_a?(RedirectPage) 
       if redirect_url = a_match.redirect_url
         location = redirect_url.match('http://') ? redirect_url : url_for(:controller => 'site', :action => 'show_page', :url => redirect_url)
