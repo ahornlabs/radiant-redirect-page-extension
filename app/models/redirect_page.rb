@@ -38,7 +38,7 @@ class RedirectPage < Page
   end
     
   def clean_redirect_url
-    unless redirect_url.blank? or redirect_url.match('^http://' || '^https://')
+    unless redirect_url.blank? or redirect_url.match('^http://') or redirect_url.match('^https://') 
       new_url = redirect_url.gsub(%r{//+},'/').gsub(%r{\s+},'')
       new_url.gsub!(%r{\/$},'') unless new_url == '/'
       new_url.gsub!(%r{^/},'') unless new_url == '/'
