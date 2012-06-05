@@ -13,7 +13,7 @@ module PageRedirect::ControllerExtensions
     a_match = params[:locale].blank? ? Page.find_by_url(url, live?) : Page.find_by_url("#{params[:locale].to_s}/#{url}", live?)
     if a_match && a_match.is_a?(RedirectPage) 
       if redirect_url = a_match.redirect_url
-        location = redirect_url.match('http://') ? redirect_url : url_for(:controller => 'site', :action => 'show_page', :url => redirect_url)
+        location = redirect_url.match('http://' || 'https://') ? redirect_url : url_for(:controller => 'site', :action => 'show_page', :url => redirect_url)
         redirect_to CGI.unescape(location), :status => '307 Temporarily Moved' and return
       end
     end
