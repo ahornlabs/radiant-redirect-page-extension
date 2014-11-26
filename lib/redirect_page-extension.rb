@@ -1,4 +1,4 @@
-module RedirectPageExtension
+module PageRedirect
   VERSION       = "0.2.0"
   AUTHORS       = ["Michael Haag"]
   EMAIL         = ["michael.haag@ahorngmbh.de"]
