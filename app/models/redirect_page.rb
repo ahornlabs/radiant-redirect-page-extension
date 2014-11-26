@@ -21,7 +21,7 @@ class RedirectPage < Page
     # if redirect_url
     #   puts "redirect_url #{redirect_url}"
     #   puts Page.all.map(&:inspect)
-    #   page = Page.find_by_url(redirect_url, true) || Page.find_by_url(redirect_url, false)
+    #   page = Page.find_by_path(redirect_url, true) || Page.find_by_path(redirect_url, false)
     #   puts page.inspect
     #   if page && page.is_a?(RedirectPage) && page.redirect_url == redirect_url
     #     raise DataMismatch, "Redirect URL may not be the same."
@@ -36,9 +36,9 @@ class RedirectPage < Page
       errors.add(:base, "page part can\'t be empty")
     end
   end
-    
+
   def clean_redirect_url
-    unless redirect_url.blank? or redirect_url.match('^http://') or redirect_url.match('^https://') 
+    unless redirect_url.blank? or redirect_url.match('^http://') or redirect_url.match('^https://')
       new_url = redirect_url.gsub(%r{//+},'/').gsub(%r{\s+},'')
       new_url.gsub!(%r{\/$},'') unless new_url == '/'
       new_url.gsub!(%r{^/},'') unless new_url == '/'
